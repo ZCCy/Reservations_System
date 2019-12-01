@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.demo.dao.LearnVisitDao">
+
+    <insert id="insertLv" parameterType="com.system.demo.enity.LearnVisitEntity">
+        INSERT INTO learn_visit(openid, contact_unit, contactMan, contactPhone, place, date, time, major, class, status,pricpleSign)
+        VALUES (#{openId},#{contactUnit},#{contactMan},#{contactPhone},#{place},#{date},#{time},#{major},#{classes},0,#{pricpleSign})
+    </insert>
+
+    <select id="getForm" resultType="com.system.demo.enity.LearnVisitEntity">
+        select
+        a.id as "formid",
+        a.openid as "openId",
+        a.contact_unit as "contactUnit",
+        a.contactMan as "contactMan",
+        a.contactPhone as "contactPhone",
+        a.place as "place",
+        a.date as "date",
+        a.time as "time",
+        a.major as "major",
+        a.class as "calsses",
+        a.status as "status",
+        a.pricpleSign as "pricpleSign"
+        FROM learn_visit a
+    </select>
+    <update id="updateLearn">
+         update learn_visit
+         set status = #{status}
+         where id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.demo.dao.TeamVisitDao">
+    <insert id="insertTV" parameterType="com.system.demo.enity.TeamVisitEntity">
+        INSERT INTO team_visit(openid, contact_unit, accompany_leader, place, gust, position, people_number, if_alumni, welcome_mesag,date,time,contactMan,contactPhone,pricpleSign)
+        VALUES
+        (#{openId},#{contactUnit},#{accompanyLeader},#{place},#{gust},#{position},#{peopleNumber},#{ifAlumni},#{welcomeMesag},#{date},#{time},#{contactMan},#{contactPhone},#{pricpleSign})
+    </insert>
+
+    <select id="getForm" resultType="com.system.demo.enity.TeamVisitEntity">
+        select
+        a.id as "formId",
+        a.openid as "openId",
+        a.contact_unit as "contactUnit",
+        a.accompany_leader as "accompanyLeader",
+        a.contactMan as "contactMan",
+        a.contactPhone as "contactPhone",
+        a.place as "place",
+        a.date as "date",
+        a.time as "time",
+        a.gust as "gust",
+        a.position as "position",
+        a.people_number as "peopleNumber",
+        a.if_alumni as "ifAlumni",
+        a.welcome_mesag as "welcomeMesag",
+        a.pricpleSign as "pricpleSign",
+        a.status as "status"
+        FROM team_visit a
+    </select>
+    <update id="updateTeam">
+         update team_visit
+         set status = #{status}
+         where id=#{id}
+    </update>
+</mapper>
